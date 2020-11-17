@@ -3,27 +3,20 @@
   "env": {
     "browser": true,
     "es6": true
-  },<% if(type !=='vue'){ %>
+  },<% if(type ==='react'){ %>
   "parser": "babel-eslint",<% } %>
   "parserOptions": {
     "ecmaVersion": 6,
-    "sourceType": "module",<% if(type !=='vue'){ %>
+    "sourceType": "module",<% if(type ==='react'){ %>
     "ecmaFeatures": {
       "jsx": true
     }<% } else { %>
     "parser": "babel-eslint"<% } %>
   },
-  "extends": [<% if(type ==='vue'){ %> "plugin:vue/essential",<% } %> "plugin:prettier/recommended"],<% if(type ==='tea-app'){ %>
-  "plugins": [],<% } %>
-  // 若是新项目，需要将以下规则放开
+  // 插件 (根据项目实际情况安装自定义插件)<% if(type ==='vue'){ %>
+  "extends": ["plugin:vue/essential", "plugin:prettier/recommended", "prettier/vue"],<% } else { %>
+  "extends": ["plugin:prettier/recommended"],<% } %>
   "rules":{
-    "no-unused-vars": "off",
-    "prefer-promise-reject-errors": "off",
-    "no-new-func": "off",
-    "no-prototype-builtins": "off",
-    "no-async-promise-executor": "off",
-    "camelcase": "off",
-    "handle-callback-err": "off",
-    "no-useless-escape": "off"
+    // eslint 规则
   }
 }
